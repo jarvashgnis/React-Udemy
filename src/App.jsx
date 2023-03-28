@@ -1,5 +1,6 @@
-import './App.css';
 import React, { Component } from 'react';
+import './App.css';
+import CardList from './components/card-list/card-list.component';
 
 class App extends Component {
   constructor() {
@@ -25,13 +26,12 @@ class App extends Component {
   searchedNameFilter = (e) => this.setState({ searchValue: e.target.value.toLowerCase() });
 
   render() {
-    const filteredUserArray = this.state.users.filter((user) => user.name.toLowerCase().includes(this.state.searchValue));
+    const filteredUserArray = this.state.users.filter((user) => (
+      user.name.toLowerCase().includes(this.state.searchValue)));
     return (
       <div className="App">
         <input onChange={this.searchedNameFilter} />
-        {filteredUserArray.map((user) => (
-          <h1 key={user.name}>{user.name}</h1>
-        ))}
+        <CardList listItems={filteredUserArray} />
       </div>
     );
   }
