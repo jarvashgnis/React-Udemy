@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import Card from '../card/card.component';
 
 class CardList extends Component {
   render() {
+    const { list_items } = this.props
     return (
-      <div>
-        {this.props.list_items.map((user) => (
-          <h1 key={user.name}>{user.name}</h1>
-        ))}
+      <div className='card-list'>
+        {list_items.map((item) => {
+          return <Card key={item.id} item={item} />
+        })}
       </div>
     );
   }
